@@ -31,7 +31,6 @@ public class SnakeController : MonoBehaviour {
         {
             GrowSnake();
         }
-       
         backgroundMusic.Play();
     }
 
@@ -50,6 +49,7 @@ public class SnakeController : MonoBehaviour {
         MoveSpeed = Mathf.Min(MoveSpeed, MaxMoveSpeed);
         MoveSpeed = Mathf.Max(MoveSpeed, MinMoveSpeed);
 
+        //backgroundMusic.pitch = +0.1f;
 
 
     // Store position history
@@ -80,8 +80,9 @@ public class SnakeController : MonoBehaviour {
 
     void OnCollisionEnter()
     {
-        print("asdf");
+        print("COLLISION!");
         GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+        backgroundMusic.Stop();
         gameOverMusic.Play();
         Destroy(gameObject); // destroy the grenade
     }
