@@ -16,52 +16,23 @@ public class SnakeController : MonoBehaviour {
     public GameObject BodyPrefab;
     public GameObject explosion;
 
+    [SerializeField]
+    private AudioSource backgroundMusic;
+    [SerializeField]
+    private AudioSource gameOverMusic;
+
     // Lists
     private List<GameObject> BodyParts = new List<GameObject>();
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
     // Start is called before the first frame update
     void Start() {
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
-        GrowSnake();
+        for (int i = 1; i< 20; i++)
+        {
+            GrowSnake();
+        }
+       
+        backgroundMusic.Play();
     }
 
     // Update is called once per frame
@@ -111,6 +82,7 @@ public class SnakeController : MonoBehaviour {
     {
         print("asdf");
         GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+        gameOverMusic.Play();
         Destroy(gameObject); // destroy the grenade
     }
 }

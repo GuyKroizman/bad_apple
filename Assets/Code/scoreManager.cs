@@ -18,7 +18,7 @@ public class scoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Time.time - lastUpdate >= 1f)
+        if (true) //  (Time.time - lastUpdate >= 1f)
         {
             score += 1;
             this.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
