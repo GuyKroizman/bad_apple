@@ -12,6 +12,7 @@ public class SnakeController : MonoBehaviour {
 
     // References
     public GameObject BodyPrefab;
+    public GameObject explosion;
 
     // Lists
     private List<GameObject> BodyParts = new List<GameObject>();
@@ -95,5 +96,13 @@ public class SnakeController : MonoBehaviour {
         // add it to the list
         GameObject body = Instantiate(BodyPrefab);
         BodyParts.Add(body);
+    }
+
+    void OnCollisionEnter()
+    {
+        print("asdf");
+        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+        Destroy(gameObject); // destroy the grenade
+        Destroy(expl, 3); // delete the explosion after 3 seconds
     }
 }
