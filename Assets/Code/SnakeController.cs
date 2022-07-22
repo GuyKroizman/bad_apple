@@ -103,6 +103,5 @@ public class SnakeController : MonoBehaviour {
         print("asdf");
         GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
         Destroy(gameObject); // destroy the grenade
-        Destroy(expl, 3); // delete the explosion after 3 seconds
     }
 }
