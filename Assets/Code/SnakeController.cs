@@ -11,15 +11,19 @@ public class SnakeController : MonoBehaviour {
     public float MinMoveSpeed = 1;
     public float SteerSpeed = 180;
     public int Gap = 10;
+    float lastUpdate = 0f;
 
-    // References
-    public GameObject BodyPrefab;
-    public GameObject explosion;
 
     [SerializeField]
     private AudioSource backgroundMusic;
     [SerializeField]
     private AudioSource gameOverMusic;
+
+
+    // References
+    public GameObject BodyPrefab;
+    public GameObject explosion;
+
 
     // Lists
     private List<GameObject> BodyParts = new List<GameObject>();
@@ -31,6 +35,7 @@ public class SnakeController : MonoBehaviour {
         {
             GrowSnake();
         }
+        backgroundMusic.pitch = 1.0f;
         backgroundMusic.Play();
     }
 
@@ -49,10 +54,9 @@ public class SnakeController : MonoBehaviour {
         MoveSpeed = Mathf.Min(MoveSpeed, MaxMoveSpeed);
         MoveSpeed = Mathf.Max(MoveSpeed, MinMoveSpeed);
 
-        //backgroundMusic.pitch = +0.1f;
 
 
-    // Store position history
+        // Store position history
         PositionsHistory.Insert(0, transform.position);
 
         // Move body parts
@@ -69,6 +73,19 @@ public class SnakeController : MonoBehaviour {
 
             index++;
         }
+
+        if (backgroundMusic.pitch < 4.0f)
+        {
+            lastUpdate = lastUpdate + Time.deltaTime;
+            if (lastUpdate > 0.05f)
+            {
+                print("PITCH UP");
+                backgroundMusic.pitch += 0.01f;
+                lastUpdate = 0f;
+            }
+        }
+
+        print(lastUpdate);
     }
 
     private void GrowSnake() {
