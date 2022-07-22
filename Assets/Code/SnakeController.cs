@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SnakeController : MonoBehaviour {
 
     // Settings
     public float MoveSpeed = 5;
+    public float MaxMoveSpeed = 30;
+    public float MinMoveSpeed = 1;
     public float SteerSpeed = 180;
-    public float BodySpeed = 5;
     public int Gap = 10;
 
     // References
@@ -72,7 +74,14 @@ public class SnakeController : MonoBehaviour {
         float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
         transform.Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
 
-        // Store position history
+        float accelerationDirection = Input.GetAxis("Vertical")/2; // Returns value -1, 0, or 1
+        MoveSpeed = MoveSpeed + accelerationDirection;
+        MoveSpeed = Mathf.Min(MoveSpeed, MaxMoveSpeed);
+        MoveSpeed = Mathf.Max(MoveSpeed, MinMoveSpeed);
+
+
+
+    // Store position history
         PositionsHistory.Insert(0, transform.position);
 
         // Move body parts
@@ -82,7 +91,7 @@ public class SnakeController : MonoBehaviour {
 
             // Move body towards the point along the snakes path
             Vector3 moveDirection = point - body.transform.position;
-            body.transform.position += moveDirection * BodySpeed * Time.deltaTime;
+            body.transform.position += moveDirection * MoveSpeed * Time.deltaTime;
 
             // Rotate body towards the point along the snakes path
             body.transform.LookAt(point);
