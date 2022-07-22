@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7859302, g: 0.8301887, b: 0.2615877, a: 1}
+  m_Color: {r: 0.83137256, g: 0.81830746, b: 0.26274508, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1052,6 +1052,7 @@ MonoBehaviour:
   BodyPrefab: {fileID: 7124840909022295909, guid: d318a7dc7eb2c408dab2f81b58cf15cb,
     type: 3}
   explosion: {fileID: 1724972533694550, guid: 63e523ab5d9ce7348b431ae1d689a54d, type: 3}
+  scoreValueManager: {fileID: 1923255859}
   backgroundMusic: {fileID: 1453738529}
   gameOverMusic: {fileID: 815830827}
 --- !u!65 &994892767
@@ -1438,7 +1439,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
