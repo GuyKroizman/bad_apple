@@ -15,6 +15,8 @@ public class SnakeController : MonoBehaviour {
     // References
     public GameObject BodyPrefab;
     public GameObject explosion;
+    public GameObject scoreValueManager;
+    private scoreManager scoreManagerScript;
 
     [SerializeField]
     private AudioSource backgroundMusic;
@@ -27,6 +29,7 @@ public class SnakeController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        scoreManagerScript = scoreValueManager.GetComponent<scoreManager>();
         for (int i = 1; i< 20; i++)
         {
             GrowSnake();
@@ -84,5 +87,8 @@ public class SnakeController : MonoBehaviour {
         GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
         gameOverMusic.Play();
         Destroy(gameObject); // destroy the grenade
+        //scoreValueManager.GetComponent<ScriptableObject>().isRunning = false;
+        scoreManagerScript.gameOver();
+
     }
 }
