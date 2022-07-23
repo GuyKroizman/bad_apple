@@ -11,3 +11,5 @@ sequenceDiagram
     user->>bad_apple_game : Play
     bad_apple_game-->>user : MUCH JOY!       
 ```
+
+![snake-carnivour](https://user-images.githubusercontent.com/5159598/180593293-fd359887-ddd4-4fbf-9ed7-dc308c7d9360.gif)
